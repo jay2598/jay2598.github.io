@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>价值投资体系实战站</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js 图表 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F3460',
+                        secondary: '#E94560',
+                        gold: '#D4AF37',
+                        light: '#F5F7FA',
+                        dark: '#1A1A2E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .nav-active {
+                @apply border-b-2 border-gold text-gold font-medium;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-gray-800 font-sans">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-gold text-2xl"></i>
+                    <h1 class="text-xl md:text-2xl font-bold">价值投资体系实战站</h1>
+                </div>
+                <!-- 移动端菜单按钮 -->
+                <button id="menuBtn" class="md:hidden text-white text-xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <!-- 桌面端导航 -->
+                <nav class="hidden md:flex gap-6">
+                    <a href="#home" class="nav-link nav-active py-2">首页</a>
+                    <a href="#mind" class="nav-link py-2">投资心法</a>
+                    <a href="#business" class="nav-link py-2">商业模式</a>
+                    <a href="#valuation" class="nav-link py-2">估值体系</a>
+                    <a href="#dividend" class="nav-link py-2">红利策略</a>
+                    <a href="#technical" class="nav-link py-2">技术分析</a>
+                    <a href="#industry" class="nav-link py-2">行业实操</a>
+                    <a href="#risk" class="nav-link py-2">风控体系</a>
+                </nav>
+            </div>
+        </div>
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-primary/95 w-full">
+            <div class="container mx-auto px-4 py-2 flex flex-col gap-3">
+                <a href="#home" class="mobile-nav-link py-2 px-3 rounded hover:bg-primary/50">首页</a>
+                <a href="#mind" class="mobile-nav-link py-2 px-3 rounded hover:bg-primary/50">投资心法</a>
+                <a href="#business" class="mobile-nav-link py-2 px-3 rounded hover:bg-primary/50">商业模式</a>
+                <a href="#valuation" class="mobile-nav-link py-2 px-3 rounded hover:bg-primary/50">估值体系</a>
+                <a href="#dividend" class="mobile-nav-link py-2 px-3 rounded hover:bg-primary/50">红利策略</a>
+                <a href="#technical" class="mobile-nav-link py-2 px-3 rounded hover:bg-primary/50">技术分析</a>
+                <a href="#industry" class="mobile-nav-link py-2 px-3 rounded hover:bg-primary/50">行业实操</a>
+                <a href="#risk" class="mobile-nav-link py-2 px-3 rounded hover:bg-primary/50">风控体系</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首页 Hero 区域 -->
+    <section id="home" class="bg-gradient-to-b from-primary to-dark text-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-shadow">
+                    损不足而奉有余<br>执价值而驭周期
+                </h2>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    一套完整的价值投资实战体系，从心法底层逻辑，到商业模式分析，从估值定价体系，到多周期技术实战，全维度覆盖A股投资全流程。
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#mind" class="bg-gold text-primary font-bold py-3 px-8 rounded-lg card-hover">
+                        开始学习
+                    </a>
+                    <a href="#calculator" class="bg-white/10 backdrop-blur-sm border border-white/20 font-medium py-3 px-8 rounded-lg card-hover">
+                        股息估值计算器
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心策略速览 -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-center text-primary mb-10">核心投资策略</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 策略卡片1 -->
+                <div class="bg-light rounded-xl p-6 shadow-sm card-hover border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-brain text-primary text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">心法为先</h4>
+                    <p class="text-gray-600">破除三大妄念，避开价值投资三大误区，建立正确的投资底层逻辑。</p>
+                </div>
+                <!-- 策略卡片2 -->
+                <div class="bg-light rounded-xl p-6 shadow-sm card-hover border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-building text-primary text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">商业模式为本</h4>
+                    <p class="text-gray-600">以"三求模型"为核心，判断企业话语权与定价权，找到产业链核心标的。</p>
+                </div>
+                <!-- 策略卡片3 -->
+                <div class="bg-light rounded-xl p-6 shadow-sm card-hover border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-coins text-primary text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">红利为盾</h4>
+                    <p class="text-gray-600">低波动高股息策略，以股息筑牢安全边际，进可攻退可守，穿越牛熊周期。</p>
+                </div>
+                <!-- 策略卡片4 -->
+                <div class="bg-light rounded-xl p-6 shadow-sm card-hover border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-chart-area text-primary text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">周期为器</h4>
+                    <p class="text-gray-600">月线定仓位，周线看趋势，日线找买点，多周期共振，精准把握买卖节奏。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 投资心法模块 -->
+    <section id="mind" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-primary mb-4">投资心法</h3>
+                    <p class="text-gray-600">投资先修心，破除妄念，避开误区，建立正确的投资底层逻辑</p>
+                </div>
+
+                <!-- 三大妄念 -->
+                <div class="mb-10">
+                    <h4 class="text-2xl font-bold text-dark mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-secondary"></i>
+                        三大投资妄念
+                    </h4>
+                    <div class="space-y-6">
+                        <!-- 妄念1 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-secondary">
+                            <h5 class="text-xl font-bold mb-3">妄念一：损失厌恶</h5>
+                            <p class="text-gray-700 mb-2">买入之时当慎之又慎，被套后才能游刃有余，气定神闲。</p>
+                            <p class="text-gray-700">若非如此，事有不济，当夺命而逃。</p>
+                        </div>
+                        <!-- 妄念2 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-secondary">
+                            <h5 class="text-xl font-bold mb-3">妄念二：从众心理</h5>
+                            <p class="text-gray-700 mb-2">从众从众，从的是什么众？</p>
+                            <p class="text-gray-700">是峰营蚁队，是一盘散沙，是散兵游勇，是乌合之众！</p>
+                        </div>
+                        <!-- 妄念3 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-secondary">
+                            <h5 class="text-xl font-bold mb-3">妄念三：锚定效应</h5>
+                            <p class="text-gray-700 mb-2">价值为人，价格为狗，估值为绳。</p>
+                            <p class="text-gray-700">切勿被历史价格锚定，价格始终围绕价值波动，核心是判断价值本身，而非历史价格高低。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 价值投资三大误区 -->
+                <div>
+                    <h4 class="text-2xl font-bold text-dark mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-xmark text-secondary"></i>
+                        价值投资三大误区
+                    </h4>
+                    <div class="space-y-6">
+                        <!-- 误区1 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <h5 class="text-xl font-bold mb-3">误区一：迷信财报</h5>
+                            <p class="text-gray-700">财报是让你用来印证你对公司商业模式和经营情况的判断的，不是让你打开一堆财报，在里面找哪个数据更好的。</p>
+                        </div>
+                        <!-- 误区2 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <h5 class="text-xl font-bold mb-3">误区二：盲目长期持有</h5>
+                            <p class="text-gray-700">长时间持有只是一种表象，内在是挖掘价值、向市场展示价值的过程。并非持有时间越长，就越符合价值投资。</p>
+                        </div>
+                        <!-- 误区3 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <h5 class="text-xl font-bold mb-3">误区三：估值低就是价值投资</h5>
+                            <p class="text-gray-700 mb-2">估值，一定是对未来的财务数据进行估值。</p>
+                            <p class="text-gray-700">任何时候，把选股器打开，把PE、PB一拉，那都不叫估值低，那叫懒。你看到的那个PB，已经是滞后的信息了。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商业模式模块 -->
+    <section id="business" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-primary mb-4">商业模式分析</h3>
+                    <p class="text-gray-600">商业模式的核心，是判断产业链中的话语权与定价权，找到真正的优质标的</p>
+                </div>
+
+                <!-- 核心逻辑 -->
+                <div class="bg-light rounded-xl p-8 mb-10 border border-gray-100 shadow-sm">
+                    <h4 class="text-2xl font-bold text-dark mb-4">商业模式核心本质</h4>
+                    <p class="text-lg text-gray-700 mb-6">商业模式是个「求」。你要看和公司的利益相关者，与上市公司之间的关系，是谁有求于谁。这种求的外在表现，就是话语权、定价权的让渡。</p>
+                    <div class="bg-primary/5 rounded-lg p-6 border border-primary/20">
+                        <h5 class="text-xl font-bold text-primary mb-4 text-center">最好的商业模式：三求模型</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                            <div class="p-4">
+                                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid fa-industry text-white"></i>
+                                </div>
+                                <h6 class="font-bold mb-2">上游求</h6>
+                                <p class="text-gray-600">上游厂商挤破脑袋求着你和他们合作</p>
+                            </div>
+                            <div class="p-4">
+                                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid fa-users text-white"></i>
+                                </div>
+                                <h6 class="font-bold mb-2">下游求</h6>
+                                <p class="text-gray-600">下游消费者排着队求你卖产品</p>
+                            </div>
+                            <div class="p-4">
+                                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid fa-building-flag text-white"></i>
+                                </div>
+                                <h6 class="font-bold mb-2">ZF求</h6>
+                                <p class="text-gray-600">当地ZF求着你把工厂别搬走</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产业链分类 -->
+                <div class="mb-10">
+                    <h4 class="text-2xl font-bold text-dark mb-6">全产业链企业分类</h4>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                            <h5 class="text-xl font-bold mb-2">上游源头企业</h5>
+                            <p class="text-gray-700">主要是各种资源类企业，煤、矿、有色、贵金属、油，掌握产业链核心资源，具备天然的供给壁垒。</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                            <h5 class="text-xl font-bold mb-2">中游制造企业</h5>
+                            <p class="text-gray-700">有上游、有下游，主要是各种工业制造、农业加工企业，煤化工、养猪均属于这类。核心壁垒只有成本，无定价权，非成本最低者不投。</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                            <h5 class="text-xl font-bold mb-2">下游终端企业</h5>
+                            <p class="text-gray-700">对接上游企业，下游直接面向消费者，核心壁垒是品牌、渠道与用户心智，直接决定产品定价权与终端需求。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人之道底层逻辑 -->
+                <div class="bg-dark text-white rounded-xl p-8">
+                    <h4 class="text-2xl font-bold mb-4 text-gold">人之道：损不足而奉有余</h4>
+                    <p class="text-lg mb-4">股票是人的经济活动，应该遵循的是人之道：损不足而奉有余。</p>
+                    <p class="text-gray-300 mb-4">正确的做法是优胜劣汰，把差的股票淘汰掉，全部买成最好的股票。这也是指数的编制原理。</p>
+                    <p class="text-gray-300">为什么大多数人跑不过指数？就是因为喜欢卖强补弱。所谓加仓，是对你看好标的持续的押注，而不是套牢以后赌气的殊死一搏。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 估值体系模块 -->
+    <section id="valuation" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-primary mb-4">估值体系</h3>
+                    <p class="text-gray-600">建立科学的估值方法，找准标的安全边际与收益空间，拒绝盲目估值</p>
+                </div>
+
+                <!-- 核心估值口诀 -->
+                <div class="bg-primary text-white rounded-xl p-8 mb-10 text-center">
+                    <h4 class="text-2xl font-bold mb-6">核心估值十六字诀</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div class="p-4">
+                            <p class="text-xl font-bold text-gold mb-1">PE为主</p>
+                            <p class="text-sm text-white/80">搏取上限</p>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-xl font-bold text-gold mb-1">PB为辅</p>
+                            <p class="text-sm text-white/80">保障下限</p>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-xl font-bold text-gold mb-1">股息为先</p>
+                            <p class="text-sm text-white/80">进退自如</p>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-xl font-bold text-gold mb-1">增速为次</p>
+                            <p class="text-sm text-white/80">稳定发展</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 三大估值方法 -->
+                <div class="space-y-8 mb-10">
+                    <!-- PE估值法 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold text-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-primary"></i>
+                            PE估值法
+                        </h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>核心逻辑：纵比自己（历史PE分位），横比同行（同行业PE均值），判断估值高低</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>适用场景：净资产和收益之间没有明显的强相关性和线性关系的企业，多数周期行业、非金融类企业</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>核心禁忌：仅用静态PE判断估值高低，忽略企业未来盈利变化与行业周期</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- PB估值法 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold text-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-book text-primary"></i>
+                            PB估值法
+                        </h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>核心逻辑：以企业净资产为锚，结合历史PB分位与同行PB水平，判断估值安全边际</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>适用场景：银行等金融企业——银行的净资产可以补充核心一级资本充足率，且无产能制约，投入的净资产可快速带来收益</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>核心用法：纵比自身历史PB分位，结合经营性现金流/归母净利润指标综合判断</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 股息估值法 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold text-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-hand-holding-dollar text-primary"></i>
+                            股息估值法
+                        </h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>核心逻辑：以股息率筑牢安全边际，跌的越多，股息率越高，持有成本持续降低</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>计算方式：按照5%的标准股息测算，用预期分红除以标准股息率，得到股票的下限区间</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+                                <span>核心作用：不涨时可作为现金流复投或改善生活，上涨时享受估值溢价，进可攻退可守</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 每股收益核心公式 -->
+                <div class="bg-light rounded-xl p-6 border border-gray-100 shadow-sm">
+                    <h4 class="text-xl font-bold text-dark mb-4">每股收益（业绩）核心计算</h4>
+                    <p class="text-gray-700 mb-4">基本每股收益是投资决策的核心指标，切勿用简易公式粗略计算，避免估值偏差</p>
+                    <div class="bg-dark text-white rounded-lg p-4 mb-4">
+                        <p class="font-mono text-lg">基本每股收益 = (归母净利润 - 优先股股息 - 永续债利息) / 流通在外普通股加权平均股数</p>
+                    </div>
+                    <div class="space-y-2 text-gray-700">
+                        <p>1. 分母需剔除库存股，流通股数减少，会使真实每股收益高于粗略计算值</p>
+                        <p>2. 分母采用加权平均股数，若年内发生债转股、增发，加权股数＜期末总股本，真实收益更高</p>
+                        <p>3. 分子需扣除优先股股息、永续债利息，会使真实每股收益低于粗略计算值</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 红利策略模块 -->
+    <section id="dividend" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-primary mb-4">低波动红利策略</h3>
+                    <p class="text-gray-600">以高股息为盾，以龙头基本面为矛，穿越牛熊周期的稳健投资体系</p>
+                </div>
+
+                <!-- 策略适用范围 -->
+                <div class="bg-primary/5 rounded-xl p-6 mb-10 border border-primary/20">
+                    <h4 class="text-xl font-bold text-primary mb-4">策略适用边界</h4>
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1 bg-white rounded-lg p-4 shadow-sm">
+                            <h5 class="font-bold text-dark mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-green-600"></i>
+                                适用标的
+                            </h5>
+                            <p class="text-gray-700">央企、国企、行业龙头、千亿市值以上大市值红利股</p>
+                        </div>
+                        <div class="flex-1 bg-white rounded-lg p-4 shadow-sm">
+                            <h5 class="font-bold text-dark mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-xmark text-red-600"></i>
+                                不适用标的
+                            </h5>
+                            <p class="text-gray-700">小市值红利股、私企小市值红利股、无持续分红能力的标的</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- α+β选股策略 -->
+                <div class="mb-10">
+                    <h4 class="text-2xl font-bold text-dark mb-6">α+β 双维度选股体系</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- α维度 基本面筛选 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-t-4 border-primary">
+                            <h5 class="text-xl font-bold mb-4 text-primary">α 维度：基本面核心筛选</h5>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-star text-gold mt-1"></i>
+                                    <span>央企、国企+行业龙头，千亿市值以上</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-star text-gold mt-1"></i>
+                                    <span>每年分红股息率4%-6%之间</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-star text-gold mt-1"></i>
+                                    <span>连续正常分红超过10年，分红稳定性强</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- β维度 技术面择时 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-t-4 border-secondary">
+                            <h5 class="text-xl font-bold mb-4 text-secondary">β 维度：技术面择时标准</h5>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-arrow-down text-secondary mt-1"></i>
+                                    <span>高位下跌，连续跌3-5年，股价腰斩</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-arrow-down text-secondary mt-1"></i>
+                                    <span>月线明显处于低位，底部伴随利空"鬼故事"</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-arrow-down text-secondary mt-1"></i>
+                                    <span>历史送股标的看前复权月线，纯分红标的看除权月线</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 三阶仓位管理体系 -->
+                <div>
+                    <h4 class="text-2xl font-bold text-dark mb-6">三阶仓位管理体系</h4>
+                    <div class="space-y-6">
+                        <!-- 第一阶 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-primary text-white font-bold w-8 h-8 rounded-full flex items-center justify-center">1</span>
+                                <h5 class="text-xl font-bold">月下吸股息建仓（10%底仓）</h5>
+                            </div>
+                            <h6 class="font-bold text-primary mb-2">建仓标准</h6>
+                            <ul class="space-y-2 text-gray-700 mb-4">
+                                <li>选对第一阶段的高股息行业龙头，股息率达到5%以上</li>
+                                <li>价格处于月线下轨，月布林线处于跌横状态，至少经过一次完整波段</li>
+                                <li>多周期共振：日下轨+周下轨+月下轨</li>
+                                <li>MACD死叉在水下坑内，双线在0轴下方，但红柱已开始出现</li>
+                            </ul>
+                            <h6 class="font-bold text-primary mb-2">操作规则</h6>
+                            <p class="text-gray-700">股息在月下、坑内复投，突破季线中轨后，不再考虑复投加仓；仅耐心持有，不做短线波段操作。</p>
+                        </div>
+
+                        <!-- 第二阶 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-primary text-white font-bold w-8 h-8 rounded-full flex items-center justify-center">2</span>
+                                <h5 class="text-xl font-bold">龙回头补仓（30%仓位）</h5>
+                            </div>
+                            <h6 class="font-bold text-primary mb-2">补仓标准</h6>
+                            <ul class="space-y-2 text-gray-700 mb-4">
+                                <li>季线中轨附近+MACD金叉</li>
+                                <li>月线中轨、下轨越来越近，20月线和30月线慢慢走横</li>
+                                <li>月线、20月线、30月线对应股息率均达到5%-6%</li>
+                                <li>周月线同时放量突破中轨，回踩时重要阻力位变支撑位，站稳月中轨+30月线</li>
+                            </ul>
+                            <h6 class="font-bold text-primary mb-2">操作规则</h6>
+                            <p class="text-gray-700">回踩月中轨、30月线时，周线下轨+MACD刚出坑（双线0轴上方一点），日线下轨+MACD坑内，加大力度补仓。</p>
+                        </div>
+
+                        <!-- 第三阶 -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-primary text-white font-bold w-8 h-8 rounded-full flex items-center justify-center">3</span>
+                                <h5 class="text-xl font-bold">龙抬头满仓（60%仓位）</h5>
+                            </div>
+                            <h6 class="font-bold text-primary mb-2">满仓标准</h6>
+                            <ul class="space-y-2 text-gray-700 mb-4">
+                                <li>月线首次突破60月线，后回踩月30/10/5均线，沿着回踩均线再次上穿60月线，开启拉升</li>
+                                <li>30/20/10月线形成多头排列，上穿缠绕点形成强支撑</li>
+                            </ul>
+                            <h6 class="font-bold text-primary mb-2">操作规则</h6>
+                            <p class="text-gray-700">在10/20/30月线阶梯补仓；上升趋势中，30月信仰线以上，放弃日中轨+5周线的小买点，只在日下轨+周中轨、周下轨+月10/20均线处加仓。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术分析模块 -->
+    <section id="technical" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-primary mb-4">多周期技术分析体系</h3>
+                    <p class="text-gray-600">月线定仓位，周线看趋势，日线找买点，多指标共振，精准把握买卖节奏</p>
+                </div>
+
+                <!-- 核心周期口诀 -->
+                <div class="bg-dark text-white rounded-xl p-6 mb-10 text-center">
+                    <h4 class="text-2xl font-bold text-gold mb-4">周期操作核心口诀</h4>
+                    <p class="text-xl font-medium mb-2">月线定仓位，周线看趋势，日线找买点</p>
+                    <p class="text-white/80">周一固定看周下轨，月末看月下轨，季线MACD看大趋势</p>
+                </div>
+
+                <!-- 多周期操作规则表 -->
+                <div class="overflow-x-auto mb-10">
+                    <table class="w-full bg-white rounded-xl shadow-sm">
+                        <thead>
+                            <tr class="bg-primary text-white">
+                                <th class="py-3 px-4 text-left">日线</th>
+                                <th class="py-3 px-4 text-left">周线</th>
+                                <th class="py-3 px-4 text-left">月线</th>
+                                <th class="py-3 px-4 text-left">季线</th>
+                                <th class="py-3 px-4 text-left">操作备注</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="py-3 px-4 font-medium">中轨(20)</td>
+                                <td class="py-3 px-4">小买点(5)</td>
+                                <td class="py-3 px-4">-</td>
+                                <td class="py-3 px-4">-</td>
+                                <td class="py-3 px-4 text-sm">小买点(日线级别)，前提条件周线多头排列</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-medium">日下轨</td>
+                                <td class="py-3 px-4">周中轨(20)</td>
+                                <td class="py-3 px-4">5</td>
+                                <td class="py-3 px-4">-</td>
+                                <td class="py-3 px-4 text-sm">常规买点，多周期共振</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-medium">周下轨</td>
+                                <td class="py-3 px-4">月中轨(20)</td>
+                                <td class="py-3 px-4">-</td>
+                                <td class="py-3 px-4">5</td>
+                                <td class="py-3 px-4 text-sm">周下买套，观察30月支撑线</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-medium">30</td>
+                                <td class="py-3 px-4">60</td>
+                                <td class="py-3 px-4">中轨(20)</td>
+                                <td class="py-3 px-4">-</td>
+                                <td class="py-3 px-4 text-sm">核心趋势线，30月线为信仰线</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 核心指标实战 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <!-- BOLL指标 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold mb-4 text-primary">BOLL 布林线</h4>
+                        <div class="space-y-3">
+                            <div class="collapse-container">
+                                <button class="collapse-btn w-full text-left font-medium flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>核心形态与操作</span>
+                                    <i class="fa-solid fa-chevron-down text-primary"></i>
+                                </button>
+                                <div class="collapse-content hidden py-3 text-gray-700 text-sm space-y-2">
+                                    <p>1. 三轨放平：震荡行情，上轨做空，下轨做多</p>
+                                    <p>2. 缩口形态：区间压缩，等待突破后顺势操作</p>
+                                    <p>3. 三轨朝上：震荡上行，中轨附近做多</p>
+                                    <p>4. 三轨朝下：震荡下行，中轨附近做空</p>
+                                    <p>5. 缩口后扩口：趋势开启，沿突破方向操作</p>
+                                </div>
+                            </div>
+                            <div class="collapse-container">
+                                <button class="collapse-btn w-full text-left font-medium flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>月线实战规则</span>
+                                    <i class="fa-solid fa-chevron-down text-primary"></i>
+                                </button>
+                                <div class="collapse-content hidden py-3 text-gray-700 text-sm space-y-2">
+                                    <p>月布林线越是缩口，上下轨范围越小，越是大机会</p>
+                                    <p>月下轨走平，逐步上移，形成强支撑，是底部信号</p>
+                                    <p>月线突破上轨后，持续扩口，是主升浪信号</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MACD指标 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold mb-4 text-primary">MACD 指标</h4>
+                        <div class="space-y-3">
+                            <div class="collapse-container">
+                                <button class="collapse-btn w-full text-left font-medium flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>月线大坑战法</span>
+                                    <i class="fa-solid fa-chevron-down text-primary"></i>
+                                </button>
+                                <div class="collapse-content hidden py-3 text-gray-700 text-sm space-y-2">
+                                    <p>双线长期在0轴下方，股价创新低，MACD不创新低，形成底背离</p>
+                                    <p>水下金叉，红柱逐步放大，是底部反转信号</p>
+                                    <p>突破0轴，回踩不破0轴，开启主升浪</p>
+                                </div>
+                            </div>
+                            <div class="collapse-container">
+                                <button class="collapse-btn w-full text-left font-medium flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>月线小坑战法</span>
+                                    <i class="fa-solid fa-chevron-down text-primary"></i>
+                                </button>
+                                <div class="collapse-content hidden py-3 text-gray-700 text-sm space-y-2">
+                                    <p>双线在0轴上方，回踩形成小坑，绿柱逐步缩短</p>
+                                    <p>30月线不破，维持上涨趋势，是上涨中期调整</p>
+                                    <p>绿柱翻红，双线再次向上，开启第二波上涨</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KDJ指标 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold mb-4 text-primary">KDJ 指标</h4>
+                        <div class="space-y-3">
+                            <div class="collapse-container">
+                                <button class="collapse-btn w-full text-left font-medium flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>底部建仓规则</span>
+                                    <i class="fa-solid fa-chevron-down text-primary"></i>
+                                </button>
+                                <div class="collapse-content hidden py-3 text-gray-700 text-sm space-y-2">
+                                    <p>KDJ在20左右低位，开始关注，按1:2网格建仓</p>
+                                    <p>J线上穿D线，形成金叉，进行补仓</p>
+                                    <p>月线级别KDJ低位金叉，是大级别底部信号</p>
+                                </div>
+                            </div>
+                            <div class="collapse-container">
+                                <button class="collapse-btn w-full text-left font-medium flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>高位止盈规则</span>
+                                    <i class="fa-solid fa-chevron-down text-primary"></i>
+                                </button>
+                                <div class="collapse-content hidden py-3 text-gray-700 text-sm space-y-2">
+                                    <p>月线KDJ第一次达到90，拿住观望</p>
+                                    <p>KDJ第一个高点转折后+第二次突破月上轨，减半仓</p>
+                                    <p>高位K线下穿D线，形成死叉，再次减仓</p>
+                                    <p>第二次KDJ下穿，清仓离场</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 高低点操作规则 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 底部判断 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold text-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-up-from-bracket text-green-600"></i>
+                            底部反转判断标准
+                        </h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-green-600 mt-1"></i>
+                                <span>月线级别：底部越宽，后续上涨空间越高，优先选择月线宽底标的</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-green-600 mt-1"></i>
+                                <span>MACD底背离：股价创新低，MACD不创新低，红柱逐步放大</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-green-600 mt-1"></i>
+                                <span>放量突破30月线，回踩不破30月线，确认趋势反转</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-green-600 mt-1"></i>
+                                <span>布林线缩口后扩口，中轨向上拐头，价格站上中轨</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 顶部判断 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold text-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-down-to-bracket text-red-600"></i>
+                            顶部止盈判断标准
+                        </h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-600 mt-1"></i>
+                                <span>月线顶背离：股价上升，MACD红柱未升高，产生顶背离</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-600 mt-1"></i>
+                                <span>高位放量，底部筹码松动，换手率异常放大（央企国企除外）</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-600 mt-1"></i>
+                                <span>MACD水上死叉，月5线下穿月10线，清仓离场</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-600 mt-1"></i>
+                                <span>股息率低于2.5%，估值严重偏高，坚决止盈离场</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行业实操模块 -->
+    <section id="industry" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-primary mb-4">行业实操体系</h3>
+                    <p class="text-gray-600">分行业投资逻辑与实操规则，精准把握不同行业的投资要点</p>
+                </div>
+
+                <!-- 行业卡片 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <!-- 银行行业 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-building-columns text-white"></i>
+                            </div>
+                            <h4 class="text-xl font-bold">银行行业</h4>
+                        </div>
+                        <div class="space-y-3 text-gray-700">
+                            <p><span class="font-bold">行业本质：</span>所有行业里同质化最严重的行业，最差和最好的银行，商业模式完全一致，核心是赚息差</p>
+                            <p><span class="font-bold">核心估值方法：</span>PB估值法为核心，纵比自身历史PB分位</p>
+                            <p><span class="font-bold">选股排除规则：</span>1. 低股息标的直接排除；2. 房价跌幅最大区域的银行直接排除</p>
+                            <p><span class="font-bold">核心分析指标：</span>经营性现金流/归母净利润、市净率、净息差、股息率</p>
+                            <p><span class="font-bold">核心逻辑：</span>瞻前追溯净资产积累的经营性现金流，找到低估标的；顾后看业务边际改善信号与股息率</p>
+                        </div>
+                    </div>
+
+                    <!-- 煤炭行业 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-fire-flame-curved text-white"></i>
+                            </div>
+                            <h4 class="text-xl font-bold">煤炭行业</h4>
+                        </div>
+                        <div class="space-y-3 text-gray-700">
+                            <p><span class="font-bold">行业逻辑：</span>能源安全核心，富煤少油国情下，煤炭替代石油是长期趋势</p>
+                            <p><span class="font-bold">核心分析维度：</span>先查官方准入门槛与行业规范条件，确认政策壁垒</p>
+                            <p><span class="font-bold">煤制烯烃核心：</span>煤价、转换比、转换量、油价四大关键数据</p>
+                            <p><span class="font-bold">核心跟踪指标：</span>产能、煤价、烯烃售价、原油价格（烯烃价格先行指标）</p>
+                            <p><span class="font-bold">估值方法：</span>PE为主，股息为先，PB为辅，重点关注长期分红稳定性</p>
+                        </div>
+                    </div>
+
+                    <!-- 中游制造行业 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-gear text-white"></i>
+                            </div>
+                            <h4 class="text-xl font-bold">中游制造行业</h4>
+                        </div>
+                        <div class="space-y-3 text-gray-700">
+                            <p><span class="font-bold">核心原则：</span>一般不要投资，除非企业是行业成本最低者</p>
+                            <p><span class="font-bold">行业本质：</span>原料和产品多为标准品，无定价权，唯一壁垒是成本控制</p>
+                            <p><span class="font-bold">替代逻辑：</span>可通过做多产品期货、做空原料期货搭建虚拟工厂，获得行业平均利润，盈利差的企业无投资价值</p>
+                            <p><span class="font-bold">投资前提：</span>只有当企业估值便宜到令人发指，且具备绝对成本优势，才可考虑</p>
+                        </div>
+                    </div>
+
+                    <!-- 公用事业行业 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-bolt text-white"></i>
+                            </div>
+                            <h4 class="text-xl font-bold">公用事业行业</h4>
+                        </div>
+                        <div class="space-y-3 text-gray-700">
+                            <p><span class="font-bold">行业特性：</span>业绩稳定，现金流充沛，无大起大落，无系统性风险，适合长线红利投资</p>
+                            <p><span class="font-bold">核心逻辑：</span>市场将水电等标的视为稳定的永续债券，业绩稳定可测算，估值可精准锚定</p>
+                            <p><span class="font-bold">买入标准：</span>月线底部、MACD坑内、高股息率、低股价、业绩持续增长</p>
+                            <p><span class="font-bold">持有逻辑：</span>以股息为核心安全垫，享受业绩增长带来的估值与分红双重提升</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 板块周期规律 -->
+                <div class="bg-dark text-white rounded-xl p-8">
+                    <h4 class="text-2xl font-bold text-gold mb-6">板块周期投资规律</h4>
+                    <div class="space-y-4">
+                        <p class="text-lg">核心板块池：煤炭、石油石化、科技、大金融（银行+保险+券商）、房地产、白酒、消费、医药</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-bold text-white mb-3">大机会特征</h5>
+                                <ul class="space-y-2 text-gray-300">
+                                    <li>每一次主题投资大机会，时间长达3-5年，涨幅跨度1-3倍</li>
+                                    <li>启动前：连续下跌数年，PE估值便宜，股价低位，月线低位，股息率高，跌无可跌</li>
+                                    <li>吸筹期：低吸时间跨度长，刚开始反弹无任何消息，还会伴随利空"鬼故事"</li>
+                                    <li>拉升期：股价逐步上涨后，配合利好政策出台，继续拉升，兑现利好</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white mb-3">板块筛选方法</h5>
+                                <ul class="space-y-2 text-gray-300">
+                                    <li>将全行业龙头、千亿/万亿市值标的编辑成表格，设置半年涨幅、一年涨幅表头</li>
+                                    <li>优先看一年涨幅居前的标的，结合趋势图，判断是否为有效回踩</li>
+                                    <li>估值修复是长期过程，月线级别的估值修复，时间跨度往往很长</li>
+                                    <li>优先选择月线宽底标的，底部越宽，后续上涨空间越高</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 风控体系模块 -->
+    <section id="risk" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-primary mb-4">风控体系</h3>
+                    <p class="text-gray-600">投资先控风险，建立铁一般的风控规则，守住本金，穿越牛熊</p>
+                </div>
+
+                <!-- 杠杆使用铁律 -->
+                <div class="bg-secondary/5 rounded-xl p-6 mb-10 border border-secondary/20">
+                    <h4 class="text-2xl font-bold text-secondary mb-4">杠杆使用三大铁律</h4>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <h5 class="font-bold mb-2">铁律一：只在上升趋势加杠杆</h5>
+                            <p class="text-gray-700">仅在上升趋势五根均线多头排列时，才可上杠杆，下跌趋势绝对禁止加杠杆</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <h5 class="font-bold mb-2">铁律二：只上小杠杆，严控杠杆比例</h5>
+                            <p class="text-gray-700">严禁满仓加杠杆，仅用小比例杠杆，避免极端行情下的爆仓风险</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <h5 class="font-bold mb-2">铁律三：设好信仰线，破位立即卸杠杆</h5>
+                            <p class="text-gray-700">以20日线为信仰线，不破20日线可持有杠杆；一旦跌破20日线，无论标的质地如何，立即卸掉杠杆，绝不犹豫</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 止盈止损规则 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <!-- 止盈规则 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold text-green-600 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-money-bill-trend-up"></i>
+                            止盈核心规则
+                        </h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-green-600 mt-1"></i>
+                                <span>股息率止盈：当标的股息率低于2.5%，估值严重偏高，坚决止盈离场</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-green-600 mt-1"></i>
+                                <span>技术面止盈：月线顶背离、MACD水上死叉、月5线下穿月10线，清仓离场</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-green-600 mt-1"></i>
+                                <span>网格止盈：月线KDJ首次高点转折+第二次突破月上轨，减半仓；后续每月收盘超月上轨，卖出持有半仓的一半</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-green-600 mt-1"></i>
+                                <span>基本面止盈：企业商业模式、分红逻辑、行业基本面发生根本性变化，立即止盈</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 止损规则 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <h4 class="text-xl font-bold text-red-600 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            止损核心规则
+                        </h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-xmark text-red-600 mt-1"></i>
+                                <span>买入逻辑止损：买入时的核心逻辑被破坏，无论盈亏，立即止损离场</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-xmark text-red-600 mt-1"></i>
+                                <span>趋势止损：首次突破30月线后，一两个月收盘跌破30月线，代表突破失败，立即止损</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-xmark text-red-600 mt-1"></i>
+                                <span>大坑风险止损：月小坑转大坑，MACD绿柱缩短后继续加长，股价沿月下轨持续下跌，立即止损</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-xmark text-red-600 mt-1"></i>
+                                <span>基本面止损：企业基本面恶化、分红中断、财务造假风险，无论套牢多少，立即夺命而逃</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 小坑转大坑风险防控 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h4 class="text-xl font-bold text-dark mb-4">月小坑转月大坑风险防控</h4>
+                    <h5 class="font-bold text-primary mb-3">风险识别信号</h5>
+                    <ul class="space-y-2 text-gray-700 mb-4">
+                        <li>月线级别顶背离，上涨动能衰竭</li>
+                        <li>MACD绿柱缩短后，又继续加长绿柱，下跌趋势延续</li>
+                        <li>月下轨持续下移，靠近120月线，无支撑迹象</li>
+                        <li>第一次下影线探到月下轨后，后续两个月收盘价沿月下轨持续下跌，绿柱无缩短迹象</li>
+                    </ul>
+                    <h5 class="font-bold text-primary mb-3">防控操作规则</h5>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>出现风险信号后，即使KDJ处于低位，也暂停建仓，继续观望</li>
+                        <li>等待布林线缩口后再次扩口，下轨走平并向上形成支撑，再考虑建仓</li>
+                        <li>跌破30月线后，立即降低仓位，避免大坑风险带来的大幅回撤</li>
+                        <li>优先确认120月线强支撑，未到强支撑位前，不盲目补仓，避免越套越深</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 股息估值计算器 -->
+    <section id="calculator" class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-10">
+                <h3 class="text-3xl font-bold mb-4">股息估值计算器</h3>
+                <p class="text-white/80">快速计算标的合理估值下限，找准安全边际</p>
+            </div>
+            <div class="max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg text-gray-800">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block font-medium mb-2" for="dividend">预期每股分红（元）</label>
+                        <input type="number" id="dividend" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="例如：1.5">
+                    </div>
+                    <div>
+                        <label class="block font-medium mb-2" for="rate">标准股息率（%）</label>
+                        <input type="number" id="rate" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="默认5%" value="5">
+                    </div>
+                    <button id="calculateBtn" class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg card-hover">
+                        计算估值下限
+                    </button>
+                    <div id="result" class="hidden mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
+                        <p class="text-lg font-medium">标的合理估值下限：<span id="resultPrice" class="text-primary font-bold text-2xl">0</span> 元</p>
+                        <p class="text-sm text-gray-600 mt-2">* 该价格为对应股息率下的安全边际价格，低于该价格股息率高于标准值，安全边际更高</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <i class="fa-solid fa-chart-line text-gold text-2xl"></i>
+                    <h2 class="text-2xl font-bold">价值投资体系实战站</h2>
+                </div>
+                <p class="text-white/60 mb-6 max-w-2xl mx-auto">
+                    本网站内容仅供投资学习参考，不构成任何投资建议。股市有风险，投资需谨慎。
+                </p>
+                <p class="text-white/40 text-sm">
+                    © 2025 价值投资体系 版权所有
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // 导航栏激活状态
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const sections = document.querySelectorAll('section');
+
+        function setActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('nav-active');
+                }
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('bg-primary/50', 'text-gold');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-primary/50', 'text-gold');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveNav);
+        window.addEventListener('load', setActiveNav);
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动端菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+
+        // 折叠面板功能
+        const collapseBtns = document.querySelectorAll('.collapse-btn');
+        collapseBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // 股息估值计算器
+        const calculateBtn = document.getElementById('calculateBtn');
+        const dividendInput = document.getElementById('dividend');
+        const rateInput = document.getElementById('rate');
+        const resultDiv = document.getElementById('result');
+        const resultPrice = document.getElementById('resultPrice');
+
+        calculateBtn.addEventListener('click', () => {
+            const dividend = parseFloat(dividendInput.value);
+            const rate = parseFloat(rateInput.value);
+
+            if (isNaN(dividend) || dividend <= 0) {
+                alert('请输入有效的预期每股分红');
+                return;
+            }
+            if (isNaN(rate) || rate <= 0) {
+                alert('请输入有效的标准股息率');
+                return;
+            }
+
+            const price = dividend / (rate / 100);
+            resultPrice.textContent = price.toFixed(2);
+            resultDiv.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
